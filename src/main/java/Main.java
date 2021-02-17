@@ -1,27 +1,42 @@
-import java.awt.*;
 import java.io.File;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
+    public static String path = "C:";
+    public static String answer = "C:";
     public static void main(String[] args) {
         System.out.println("Enter a path to begin");
-        String path = getScanner().next();
-        String answer = path;
-        //Desktop.getDesktop().open((new File(path))); ajouter une commande
+        path = getScanner().next();
+        answer = path;
+
         File file = new File(path);
         if (file.exists()) {
             if (file.isDirectory()) {
-                System.out.println("You can now enter commands");
-                System.out.print("(" + path + ") -> ");
-                while (!answer.equals("stop")) {
-                    answer = getScanner().nextLine();
-                }
+                mainLoop();
             }else {
-                System.out.println("This is not a directory");
+                System.out.println("This is not a directory, open C:");
+                path = "C:";
+                mainLoop();
             }
         }else {
-            System.out.println("You can only enter an existing directory");
+            System.out.println("You can only enter an existing directory, open C:");
+            path = "C:";
+            mainLoop();
+        }
+    }
+
+    public static void mainLoop() {
+        System.out.println("You can now enter commands");
+        while (!answer.equals("stop")) {
+            System.out.print("(" + path + ") -> ");
+            answer = getScanner().nextLine();
+            String[] commandArgs = answer.split(" ");
+            try {
+                CommandsEnum c = CommandsEnum.valueOf(commandArgs[0].toUpperCase());
+                c.execute(commandArgs, answer);
+            }catch (IllegalArgumentException e) {
+                System.out.println("This is not a command, use help");
+            }
         }
     }
 
