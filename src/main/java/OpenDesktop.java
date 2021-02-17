@@ -8,6 +8,7 @@ public class OpenDesktop extends Command{
     public void execute(String[] args, String command) {
         try {
             Desktop.getDesktop().open((new File(Main.path)));
+            System.out.println("The directory is open on your desktop");
         }catch (IOException e) {
             e.printStackTrace();
             System.out.println("You can enter a command");

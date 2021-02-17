@@ -1,6 +1,7 @@
 public enum CommandsEnum {
 
-    HELP(new Help());
+    HELP(new Help()),
+    OD(new OpenDesktop());
 
     private final Command c;
 
