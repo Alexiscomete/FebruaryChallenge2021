@@ -35,7 +35,7 @@ public class Main {
                 CommandsEnum c = CommandsEnum.valueOf(commandArgs[0].toUpperCase());
                 c.execute(commandArgs, answer);
             }catch (IllegalArgumentException e) {
-                System.out.println("This is not a command, use help");
+                if (!answer.equals("stop")) System.out.println("This is not a command, use help");
             }
         }
     }
