@@ -4,7 +4,11 @@ public class TreeCommand extends Command{
     @Override
     public void execute(String[] args, String command) {
         if (args.length > 1) {
-            getDirectorySize(Main.path, 0);
+            if (args.length > 2) {
+                sendDirectorySizeAndTree(Main.path, 0);
+            }else {
+                sendDirectorySize(Main.path, 0);
+            }
         }else {
             sendTree(Main.path, 0);
         }
@@ -29,7 +33,7 @@ public class TreeCommand extends Command{
         }
     }
 
-    private static long getDirectorySize(String path, int n) {
+    private static long sendDirectorySize(String path, int n) {
         File f = new File(path);
         StringBuilder tab = new StringBuilder();
         tab.append("\t".repeat(Math.max(0, n)));
@@ -39,7 +43,7 @@ public class TreeCommand extends Command{
             for (String str : list) {
                 File file = new File(path + "\\" + str);
                 if (file.isDirectory()) {
-                    long temp = getDirectorySize(path + "\\" + str, n + 1);
+                    long temp = sendDirectorySize(path + "\\" + str, n + 1);
                     System.out.println(tab + "+ " + str + " + " + temp + " byte(s)");
                     answer += temp;
                 } else {
@@ -50,5 +54,39 @@ public class TreeCommand extends Command{
             }
         }
         return answer;
+    }
+
+    private static long getDirectorySize(File f) {
+        long answer = 0;
+        File[] files = f.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    answer += getDirectorySize(file);
+                }else {
+                    answer += file.length();
+                }
+            }
+        }
+        return answer;
+    }
+
+    private static void sendDirectorySizeAndTree(String path, int n) {
+        File f = new File(path);
+        StringBuilder tab = new StringBuilder();
+        tab.append("\t".repeat(Math.max(0, n)));
+        String[] list = f.list();
+        if (list != null) {
+            for (String str : list) {
+                File file = new File(path + "\\" + str);
+                if (file.isDirectory()) {
+                    System.out.println(tab + "+ " + str + " + " + getDirectorySize(file) + " byte(s)");
+                    sendDirectorySizeAndTree(path + "\\" + str, n + 1);
+                } else {
+                    long temp = file.length();
+                    System.out.println(tab + "- " + str + " - " + temp + " byte(s)");
+                }
+            }
+        }
     }
 }

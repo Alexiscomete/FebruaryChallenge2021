@@ -6,7 +6,7 @@ public class Main {
     public static String answer = "C:";
     public static void main(String[] args) {
         System.out.println("Enter a path to begin");
-        path = getScanner().next();
+        path = getScanner().nextLine();
         answer = path;
 
         File file = new File(path);
