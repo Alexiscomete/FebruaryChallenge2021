@@ -3,7 +3,8 @@ public enum CommandsEnum {
     HELP(new Help()),
     OD(new OpenDesktop()),
     LIST(new ListCommand()),
-    TREE(new TreeCommand());
+    TREE(new TreeCommand()),
+    CD(new ChangeDirectory());
 
     private final Command c;
 

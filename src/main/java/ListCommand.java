@@ -12,7 +12,7 @@ public class ListCommand extends Command {
         if (args.length > 1) {
             if (args[1].equals("s")) {
                 for (String str : list) {
-                    File f = new File(Main.path + "\\" + str);
+                    File f = new File(Main.path + "/" + str);
                     if (f.isDirectory()) {
                         System.out.println("+ " + str);
                     }else {
@@ -21,7 +21,7 @@ public class ListCommand extends Command {
                 }
             }else if (args[1].equals("sd")) {
                 for (String str : list) {
-                    File f = new File(Main.path + "\\" + str);
+                    File f = new File(Main.path + "/" + str);
                     if (f.isDirectory()) {
                         System.out.println("+ " + str + " + " + getDirectorySize(file) + " byte(s)");
                     }else {

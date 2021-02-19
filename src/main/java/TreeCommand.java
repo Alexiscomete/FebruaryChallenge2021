@@ -22,10 +22,10 @@ public class TreeCommand extends Command{
         tab.append("\t".repeat(Math.max(0, n)));
         if (list != null) {
             for (String str : list) {
-                File file = new File(path + "\\" + str);
+                File file = new File(path + "/" + str);
                 if (file.isDirectory()) {
                     System.out.println(tab + "+ " + str);
-                    sendTree(path + "\\" + str, n + 1);
+                    sendTree(path + "/" + str, n + 1);
                 }else {
                     System.out.println(tab + "- " + str);
                 }
@@ -41,9 +41,9 @@ public class TreeCommand extends Command{
         String[] list = f.list();
         if (list != null) {
             for (String str : list) {
-                File file = new File(path + "\\" + str);
+                File file = new File(path + "/" + str);
                 if (file.isDirectory()) {
-                    long temp = sendDirectorySize(path + "\\" + str, n + 1);
+                    long temp = sendDirectorySize(path + "/" + str, n + 1);
                     System.out.println(tab + "+ " + str + " + " + temp + " byte(s)");
                     answer += temp;
                 } else {
@@ -78,10 +78,10 @@ public class TreeCommand extends Command{
         String[] list = f.list();
         if (list != null) {
             for (String str : list) {
-                File file = new File(path + "\\" + str);
+                File file = new File(path + "/" + str);
                 if (file.isDirectory()) {
                     System.out.println(tab + "+ " + str + " + " + getDirectorySize(file) + " byte(s)");
-                    sendDirectorySizeAndTree(path + "\\" + str, n + 1);
+                    sendDirectorySizeAndTree(path + "/" + str, n + 1);
                 } else {
                     long temp = file.length();
                     System.out.println(tab + "- " + str + " - " + temp + " byte(s)");
