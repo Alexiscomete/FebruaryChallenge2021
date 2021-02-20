@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="FebruaryChallenge2021" target="8"/>
+        <module name="FebruaryChallenge2021" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="FebruaryChallenge2021" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
