@@ -9,8 +9,5 @@
         <module name="FebruaryChallenge2021" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="FebruaryChallenge2021" target="8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
