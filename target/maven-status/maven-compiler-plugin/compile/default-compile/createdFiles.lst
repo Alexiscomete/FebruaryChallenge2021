@@ -1,0 +1,8 @@
+Main.class
+OpenDesktop.class
+TreeCommand.class
+Command.class
+ListCommand.class
+ChangeDirectory.class
+Help.class
+CommandsEnum.class
