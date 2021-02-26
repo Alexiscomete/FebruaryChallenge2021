@@ -4,7 +4,8 @@ public enum CommandsEnum {
     OD(new OpenDesktop()),
     LIST(new ListCommand()),
     TREE(new TreeCommand()),
-    CD(new ChangeDirectory());
+    CD(new ChangeDirectory()),
+    RC(new ReadC());
 
     private final Command c;
 
