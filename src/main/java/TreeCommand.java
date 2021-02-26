@@ -19,7 +19,9 @@ public class TreeCommand extends Command{
         File f = new File(path);
         String[] list = f.list();
         StringBuilder tab = new StringBuilder();
-        tab.append("\t".repeat(Math.max(0, n)));
+        for (int i = 0; i < n; i++) {
+            tab.append("\t");
+        }
         if (list != null) {
             for (String str : list) {
                 File file = new File(path + "/" + str);
@@ -36,7 +38,9 @@ public class TreeCommand extends Command{
     private static long sendDirectorySize(String path, int n) {
         File f = new File(path);
         StringBuilder tab = new StringBuilder();
-        tab.append("\t".repeat(Math.max(0, n)));
+        for (int i = 0; i < n; i++) {
+            tab.append("\t");
+        }
         long answer = 0;
         String[] list = f.list();
         if (list != null) {
@@ -74,7 +78,9 @@ public class TreeCommand extends Command{
     private static void sendDirectorySizeAndTree(String path, int n) {
         File f = new File(path);
         StringBuilder tab = new StringBuilder();
-        tab.append("\t".repeat(Math.max(0, n)));
+        for (int i = 0; i < n; i++) {
+            tab.append("\t");
+        }
         String[] list = f.list();
         if (list != null) {
             for (String str : list) {
