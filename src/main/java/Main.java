@@ -2,7 +2,6 @@ import java.io.File;
 import java.util.Scanner;
 
 public class Main {
-
     public static String path = "C:";
     public static String answer = "C:";
 
