@@ -1,12 +1,14 @@
+//import java.awt.*;
 import java.io.File;
 import java.util.Scanner;
 
 public class Main {
     public static String path = "C:";
     public static String answer = "C:";
+    //public static Color mainColor = Color.WHITE;
 
     public static void main(String[] args) {
-        System.out.println("Enter a path to begin");
+        System.out.println(/*Color.ORANGE + */"Enter a path to begin");
         path = getScanner().nextLine();
         answer = path;
 

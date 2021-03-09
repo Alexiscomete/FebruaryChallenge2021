@@ -1,25 +1,16 @@
+//import java.awt.*;
+import java.io.File;
 import java.util.Scanner;
 
 public class FileEdit extends Command{
+
     @Override
     public void execute(String[] args, String command) {
-
-    }
-
-    public void mainLoop() {
-        String answer = "";
-        String file = "";
-        System.out.println("Welcome to the text editor");
-        while (!answer.equals("stop")) {
-            System.out.print("|]" + file + "[| -> ");
-            answer = getScanner().nextLine();
-            String[] commandArgs = answer.split(" ");
-            try {
-                CommandsEnum c = CommandsEnum.valueOf(commandArgs[0].toUpperCase());
-                c.execute(commandArgs, answer);
-            }catch (IllegalArgumentException e) {
-                if (!answer.equals("stop")) System.out.println("This is not a command, use help");
-            }
+        System.out.println(/*Color.ORANGE + */"Enter a file to start application");
+        String fileName = getScanner().nextLine();
+        File file = new File(fileName);
+        if (file.exists() && !file.isDirectory()) {
+            new FileEditApp(fileName, file);
         }
     }
 
