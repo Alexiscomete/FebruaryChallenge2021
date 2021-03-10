@@ -1,12 +1,12 @@
 package FileEditApp;
 
-public enum CommandsEnumFileEdit {
+public enum CommandsEnumRead {
 
-    ;
+    HELP(new ReadHelp());
 
     private final Command c;
 
-    CommandsEnumFileEdit(Command command) {
+    CommandsEnumRead(Command command) {
         this.c = command;
     }
 

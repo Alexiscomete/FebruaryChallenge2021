@@ -8,7 +8,7 @@ public class FileEdit extends Command{
     public void execute(String[] args, String command) {
         System.out.println(/*Color.ORANGE + */"Enter a file to start application");
         String fileName = getScanner().nextLine();
-        File file = new File(fileName);
+        File file = new File(Main.path + "/" + fileName);
         if (file.exists() && !file.isDirectory()) {
             new FileEditApp(fileName, file);
         }else{

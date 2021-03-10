@@ -1,6 +1,6 @@
-import java.io.File;
+import java.io.*;
 import java.util.Scanner;
-import FileEditApp.CommandsEnumFileEdit;
+import FileEditApp.*;
 
 public class FileEditApp implements App{
     String fileName;
@@ -16,15 +16,51 @@ public class FileEditApp implements App{
     public void mainLoop() {
         String answer = "";
         System.out.println("Welcome to the text editor");
+        System.out.println("<< for read commands, >> for write commands, >>help and <<help");
         while (!answer.equals("stop")) {
+
             System.out.print("|]" + fileName + "[| -> ");
             answer = getScanner().nextLine();
             String[] commandArgs = answer.split(" ");
             try {
-                CommandsEnumFileEdit c = CommandsEnumFileEdit.valueOf(commandArgs[0].toUpperCase());
-                c.execute(commandArgs, answer);
+                if (answer.startsWith(">>")) {
+                    CommandsEnumWrite c = CommandsEnumWrite.valueOf(commandArgs[0].toUpperCase().substring(2));
+                    c.execute(commandArgs, answer);
+                }else if (answer.startsWith("<<")){
+                    CommandsEnumRead c = CommandsEnumRead.valueOf(commandArgs[0].toUpperCase().substring(2));
+                    c.execute(commandArgs, answer);
+                }else{
+                    System.out.println("<< for read commands, >> for write commands, >>help and <<help");
+                }
+
             }catch (IllegalArgumentException e) {
-                if (!answer.equals("stop")) System.out.println("This is not a command, use help");
+                if (!answer.equals("stop")) {
+                    if (answer.startsWith(">>")) {
+                        try {
+                            FileOutputStream fos = new FileOutputStream(file);
+                            fos.write(answer.getBytes());
+                            fos.close();
+                        } catch (IOException fileNotFoundException) {
+                            System.out.println("IOException");
+                        }
+                    }else if (answer.startsWith("<<")) {
+                        try {
+                            Scanner sc = new Scanner(file);
+                            if (answer.length() == 2) {
+                                while (sc.hasNextLine()) {
+                                    System.out.println(sc.nextLine());
+                                }
+                            }else{
+                                String arg = commandArgs[0].toUpperCase().substring(2);
+                                int n = Integer.parseInt(arg);
+                                for (int i = 0; i < n; i++) sc.nextLine();
+                                System.out.println(sc.nextLine());
+                            }
+                        } catch (FileNotFoundException fileNotFoundException) {
+                            fileNotFoundException.printStackTrace();
+                        }
+                    }
+                }
             }
         }
     }
