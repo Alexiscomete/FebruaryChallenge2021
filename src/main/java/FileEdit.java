@@ -11,6 +11,8 @@ public class FileEdit extends Command{
         File file = new File(fileName);
         if (file.exists() && !file.isDirectory()) {
             new FileEditApp(fileName, file);
+        }else{
+            System.out.println("This is not a valid name");
         }
     }
 

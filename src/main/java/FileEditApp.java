@@ -7,7 +7,9 @@ public class FileEditApp implements App{
     File file;
 
     public FileEditApp(String fileName, File file) {
-
+        this.fileName = fileName;
+        this.file = file;
+        mainLoop();
     }
 
     @Override
