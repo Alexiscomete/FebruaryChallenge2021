@@ -13,26 +13,23 @@ public class MainApp implements App {
 
     public MainApp(GetScanner sc, Admin yes) {
         System.out.println("Enter a path to begin");
+        this.sc = sc;
         path = sc.getScanner().nextLine();
 
 
         File file = new File(path);
         if (file.exists()) {
-            if (file.isDirectory()) {
-                answer = path;
-                mainLoop();
-            }else {
+            if (!file.isDirectory()) {
                 System.out.println("This is not a directory, open C:");
                 path = "C:";
-                answer = path;
-                mainLoop();
             }
         }else {
             System.out.println("You can only enter an existing directory, open C:");
             path = "C:";
-            answer = path;
-            mainLoop();
+
         }
+        answer = path;
+        mainLoop();
     }
 
     @Override

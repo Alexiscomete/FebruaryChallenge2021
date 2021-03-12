@@ -2,6 +2,7 @@ package Scanners;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Scanner;
 
 public class FileScanner implements GetScanner {
@@ -19,6 +20,10 @@ public class FileScanner implements GetScanner {
 
     @Override
     public Scanner getScanner() {
+        if (!scanner.hasNextLine()) {
+            System.out.println("Say stop");
+            return new Scanner(System.in);
+        }
         return scanner;
     }
 }

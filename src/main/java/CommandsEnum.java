@@ -6,7 +6,8 @@ public enum CommandsEnum {
     TREE(new TreeCommand()),
     CD(new ChangeDirectory()),
     RC(new ReadC()),
-    FE(new FileEdit());
+    FE(new FileEdit()),
+    EF(new ExecuteFile());
 
     private final Command c;
 
