@@ -14,7 +14,7 @@ public enum CommandsEnum {
         this.c = command;
     }
 
-    public void execute(String[] args, String command) {
-        this.c.execute(args, command);
+    public void execute(String[] args, String command, String path) {
+        this.c.execute(args, command, path);
     }
 }

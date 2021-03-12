@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class FileEdit extends Command{
 
     @Override
-    public void execute(String[] args, String command) {
+    public void execute(String[] args, String command, String path) {
         System.out.println(/*Color.ORANGE + */"Enter a file to start application");
         String fileName = getScanner().nextLine();
-        File file = new File(Main.path + "/" + fileName);
+        File file = new File(path + "/" + fileName);
         if (file.exists() && !file.isDirectory()) {
             new FileEditApp(fileName, file);
         }else{

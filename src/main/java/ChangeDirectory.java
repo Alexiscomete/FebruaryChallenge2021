@@ -5,13 +5,13 @@ import java.nio.file.Paths;
 
 public class ChangeDirectory extends Command{
     @Override
-    public void execute(String[] args, String command) {
+    public void execute(String[] args, String command, String path, MainApp app) {
         String newPath = command.substring(3);
         if (!newPath.startsWith(".")) {
             File file = new File(newPath);
             if (file.exists()) {
                 if (file.isDirectory()) {
-                    Main.path = newPath;
+                    app.path = newPath;
                     System.out.println("The path has been changed");
                 }else {
                     System.out.println("This is not a directory");
@@ -21,10 +21,10 @@ public class ChangeDirectory extends Command{
 
             }
         }else {
-            File file = new File(Paths.get(Main.path + "/" + newPath).normalize().toString());
+            File file = new File(Paths.get(path + "/" + newPath).normalize().toString());
             if (file.exists()) {
                 if (file.isDirectory()) {
-                    Main.path = file.getAbsolutePath();
+                    app.path = file.getAbsolutePath();
                     System.out.println("The path has been changed");
                 }else {
                     System.out.println("This is not a directory");

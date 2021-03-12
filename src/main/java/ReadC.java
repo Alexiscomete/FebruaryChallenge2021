@@ -6,7 +6,7 @@ public class ReadC extends Command{
     @Override
     public void execute(String[] args, String command) {
         if (args.length > 1) {
-            File file = new File(Main.path + "/" + args[1]);
+            File file = new File(MainApp.path + "/" + args[1]);
             if (file.exists()) {
                 if(file.isDirectory()) {
                     System.out.println("rc -> list");

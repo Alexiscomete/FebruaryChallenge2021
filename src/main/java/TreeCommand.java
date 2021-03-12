@@ -2,15 +2,15 @@ import java.io.File;
 
 public class TreeCommand extends Command{
     @Override
-    public void execute(String[] args, String command) {
+    public void execute(String[] args, String command, String path) {
         if (args.length > 1) {
             if (args.length > 2) {
-                sendDirectorySizeAndTree(Main.path, 0);
+                sendDirectorySizeAndTree(path, 0);
             }else {
-                sendDirectorySize(Main.path, 0);
+                sendDirectorySize(path, 0);
             }
         }else {
-            sendTree(Main.path, 0);
+            sendTree(path, 0);
         }
 
     }

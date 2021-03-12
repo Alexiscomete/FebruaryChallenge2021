@@ -3,7 +3,7 @@ import java.io.File;
 public class ListCommand extends Command {
     @Override
     public void execute(String[] args, String command) {
-        File file = new File(Main.path);
+        File file = new File(MainApp.path);
         String[] list = file.list();
         if (list == null) {
             System.out.println("List == null");
@@ -12,7 +12,7 @@ public class ListCommand extends Command {
         if (args.length > 1) {
             if (args[1].equals("s")) {
                 for (String str : list) {
-                    File f = new File(Main.path + "/" + str);
+                    File f = new File(MainApp.path + "/" + str);
                     if (f.isDirectory()) {
                         System.out.println("+ " + str);
                     }else {
@@ -21,7 +21,7 @@ public class ListCommand extends Command {
                 }
             }else if (args[1].equals("sd")) {
                 for (String str : list) {
-                    File f = new File(Main.path + "/" + str);
+                    File f = new File(MainApp.path + "/" + str);
                     if (f.isDirectory()) {
                         System.out.println("+ " + str + " + " + getDirectorySize(file) + " byte(s)");
                     }else {
