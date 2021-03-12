@@ -2,9 +2,13 @@ package Admin;
 
 public enum AdminList {
 
-    YES(),
-    NO(),
-    ASK();
+    YES(new IsAdmin()),
+    NO(new NotAdmin()),
+    ASK(new AskAdmin());
 
-    public Admin;
+    public Admin ad;
+
+    AdminList(Admin admin) {
+        this.ad = admin;
+    }
 }

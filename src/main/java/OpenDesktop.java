@@ -5,9 +5,9 @@ import java.io.IOException;
 public class OpenDesktop extends Command{
 
     @Override
-    public void execute(String[] args, String command) {
+    public void execute(String[] args, String command, String path, MainApp app) {
         try {
-            Desktop.getDesktop().open((new File(MainApp.path)));
+            Desktop.getDesktop().open((new File(path)));
             System.out.println("The directory is open on your desktop");
         }catch (IOException e) {
             e.printStackTrace();

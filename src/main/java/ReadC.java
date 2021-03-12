@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class ReadC extends Command{
     @Override
-    public void execute(String[] args, String command) {
+    public void execute(String[] args, String command, String path, MainApp app) {
         if (args.length > 1) {
-            File file = new File(MainApp.path + "/" + args[1]);
+            File file = new File(path + "/" + args[1]);
             if (file.exists()) {
                 if(file.isDirectory()) {
                     System.out.println("rc -> list");
                     args = new String[]{"list"};
-                    CommandsEnum.LIST.execute(args, command);
+                    CommandsEnum.LIST.execute(args, command, path, app);
                 }else {
                     try {
                         Scanner sc = new Scanner(file);

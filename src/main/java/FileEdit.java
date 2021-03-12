@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class FileEdit extends Command{
 
     @Override
-    public void execute(String[] args, String command, String path) {
+    public void execute(String[] args, String command, String path, MainApp app) {
         System.out.println(/*Color.ORANGE + */"Enter a file to start application");
         String fileName = getScanner().nextLine();
         File file = new File(path + "/" + fileName);

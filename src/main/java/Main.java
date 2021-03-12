@@ -1,12 +1,11 @@
 //import java.awt.*;
-import Scanners.MainScanner;
 
-import java.io.File;
-import java.util.Scanner;
+import Admin.AdminList;
+import Scanners.MainScanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        new MainApp(new MainScanner());
+        new MainApp(new MainScanner(), AdminList.YES.ad);
     }
 }

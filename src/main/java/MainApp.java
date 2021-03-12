@@ -1,3 +1,5 @@
+import Admin.Admin;
+import Admin.AdminList;
 import Scanners.GetScanner;
 
 import java.io.File;
@@ -9,7 +11,7 @@ public class MainApp implements App {
     public String answer;
     public GetScanner sc;
 
-    public MainApp(GetScanner sc) {
+    public MainApp(GetScanner sc, Admin yes) {
         System.out.println("Enter a path to begin");
         path = sc.getScanner().nextLine();
 
@@ -42,7 +44,7 @@ public class MainApp implements App {
             String[] commandArgs = answer.split(" ");
             try {
                 CommandsEnum c = CommandsEnum.valueOf(commandArgs[0].toUpperCase());
-                c.execute(commandArgs, answer, path);
+                c.execute(commandArgs, answer, path, this);
             }catch (IllegalArgumentException e) {
                 if (!answer.equals("stop")) System.out.println("This is not a command, use help");
             }

@@ -2,7 +2,7 @@ import java.io.File;
 
 public class TreeCommand extends Command{
     @Override
-    public void execute(String[] args, String command, String path) {
+    public void execute(String[] args, String command, String path, MainApp app) {
         if (args.length > 1) {
             if (args.length > 2) {
                 sendDirectorySizeAndTree(path, 0);
