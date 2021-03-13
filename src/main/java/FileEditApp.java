@@ -24,10 +24,10 @@ public class FileEditApp implements App{
             try {
                 if (answer.startsWith(">>")) {
                     CommandsEnumWrite c = CommandsEnumWrite.valueOf(commandArgs[0].toUpperCase().substring(2));
-                    c.execute(commandArgs, answer);
+                    c.execute(commandArgs, answer, file.getAbsolutePath());
                 }else if (answer.startsWith("<<")){
                     CommandsEnumRead c = CommandsEnumRead.valueOf(commandArgs[0].toUpperCase().substring(2));
-                    c.execute(commandArgs, answer);
+                    c.execute(commandArgs, answer, file.getAbsolutePath());
                 }else{
                     System.out.println("<< for read commands, >> for write commands, >>help and <<help");
                 }
