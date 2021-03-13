@@ -10,11 +10,13 @@ public class MainApp implements App {
     public String path;
     public String answer;
     public GetScanner sc;
+    public Admin admin;
 
     public MainApp(GetScanner sc, Admin yes) {
         System.out.println("Enter a path to begin");
         this.sc = sc;
         path = sc.getScanner().nextLine();
+        admin = yes;
 
 
         File file = new File(path);
