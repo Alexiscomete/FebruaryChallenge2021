@@ -18,7 +18,6 @@ public class FileEditApp implements App{
         System.out.println("Welcome to the text editor");
         System.out.println("<< for read commands, >> for write commands, >>help and <<help");
         while (!answer.equals("stop")) {
-
             System.out.print("|]" + fileName + "[| -> ");
             answer = getScanner().nextLine();
             String[] commandArgs = answer.split(" ");
@@ -37,6 +36,8 @@ public class FileEditApp implements App{
                 if (!answer.equals("stop")) {
                     if (answer.startsWith(">>")) {
                         try {
+                            answer = answer.substring(2);
+                            answer = getAllLines() + answer;
                             FileOutputStream fos = new FileOutputStream(file);
                             fos.write(answer.getBytes());
                             fos.close();
@@ -67,5 +68,15 @@ public class FileEditApp implements App{
 
     public static Scanner getScanner() { // pour vider la mémoire du scanner à chaque fois et éviter les erreurs
         return new Scanner(System.in);
+    }
+
+    public String getAllLines() throws FileNotFoundException {
+        Scanner sc = new Scanner(file);
+        StringBuilder answer = new StringBuilder();
+        while (sc.hasNextLine()) {
+            answer.append(sc.nextLine());
+            answer.append("\n");
+        }
+        return answer.toString();
     }
 }

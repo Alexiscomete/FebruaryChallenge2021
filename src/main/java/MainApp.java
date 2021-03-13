@@ -1,9 +1,7 @@
 import Admin.Admin;
-import Admin.AdminList;
 import Scanners.GetScanner;
 
 import java.io.File;
-import java.util.Scanner;
 
 public class MainApp implements App {
 
@@ -22,12 +20,12 @@ public class MainApp implements App {
         File file = new File(path);
         if (file.exists()) {
             if (!file.isDirectory()) {
-                System.out.println("This is not a directory, open C:");
-                path = "C:";
+                System.out.println("This is not a directory, open C:/");
+                path = "C:/";
             }
         }else {
-            System.out.println("You can only enter an existing directory, open C:");
-            path = "C:";
+            System.out.println("You can only enter an existing directory, open C:/");
+            path = "C:/";
 
         }
         answer = path;
