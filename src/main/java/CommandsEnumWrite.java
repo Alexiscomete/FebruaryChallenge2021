@@ -4,6 +4,7 @@ import java.io.File;
 
 public enum CommandsEnumWrite {
 
+    CLEAR(new Clear()),
     HELP(new WriteHelp());
 
     private final CommandFileEdit c;

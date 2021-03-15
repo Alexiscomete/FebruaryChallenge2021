@@ -8,7 +8,7 @@ public class Clear extends CommandFileEdit {
     @Override
     public void execute(String[] args, String command, File file, FileEditApp app, Admin admin) {
         if (admin.isAdmin("clear a file")) {
-            FileOutputStream fos = null;
+            FileOutputStream fos;
             try {
                 fos = new FileOutputStream(file);
                 fos.write("".getBytes());
