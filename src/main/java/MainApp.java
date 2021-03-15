@@ -3,12 +3,11 @@ import Scanners.GetScanner;
 
 import java.io.File;
 
-public class MainApp implements App {
+public class MainApp extends App {
 
     public String path;
     public String answer;
-    public GetScanner sc;
-    public Admin admin;
+
 
     public MainApp(GetScanner sc, Admin yes) {
         System.out.println("Enter a path to begin");

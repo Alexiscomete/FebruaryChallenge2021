@@ -4,11 +4,9 @@ import Scanners.GetScanner;
 import java.io.*;
 import java.util.Scanner;
 
-public class FileEditApp implements App{
+public class FileEditApp extends App{
     public String fileName;
     public File file;
-    public Admin admin;
-    public GetScanner sc;
 
     public FileEditApp(String fileName, File file, Admin admin, GetScanner sc) {
         this.fileName = fileName;
