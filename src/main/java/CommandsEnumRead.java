@@ -1,5 +1,7 @@
 import Admin.Admin;
 
+import java.io.File;
+
 public enum CommandsEnumRead {
 
     HELP(new ReadHelp());
@@ -10,6 +12,6 @@ public enum CommandsEnumRead {
         this.c = command;
     }
 
-    public void execute(String[] args, String command, String path, FileEditApp app, Admin admin) {
-        this.c.execute(args, command, path, app, admin);
+    public void execute(String[] args, String command, File file, FileEditApp app, Admin admin) {
+        this.c.execute(args, command, file, app, admin);
     }}

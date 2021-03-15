@@ -1,17 +1,20 @@
 import Admin.Admin;
+import Scanners.GetScanner;
 
 import java.io.*;
 import java.util.Scanner;
 
 public class FileEditApp implements App{
-    String fileName;
-    File file;
-    Admin admin;
+    public String fileName;
+    public File file;
+    public Admin admin;
+    public GetScanner sc;
 
-    public FileEditApp(String fileName, File file, Admin admin) {
+    public FileEditApp(String fileName, File file, Admin admin, GetScanner sc) {
         this.fileName = fileName;
         this.file = file;
         this.admin = admin;
+        this.sc = sc;
         mainLoop();
     }
 
@@ -22,15 +25,15 @@ public class FileEditApp implements App{
         System.out.println("<< for read commands, >> for write commands, >>help and <<help");
         while (!answer.equals("stop")) {
             System.out.print("|]" + fileName + "[| -> ");
-            answer = getScanner().nextLine();
+            answer = sc.getScanner().nextLine();
             String[] commandArgs = answer.split(" ");
             try {
                 if (answer.startsWith(">>")) {
                     CommandsEnumWrite c = CommandsEnumWrite.valueOf(commandArgs[0].toUpperCase().substring(2));
-                    c.execute(commandArgs, answer, file.getAbsolutePath(), this, admin);
+                    c.execute(commandArgs, answer, file, this, admin);
                 }else if (answer.startsWith("<<")){
                     CommandsEnumRead c = CommandsEnumRead.valueOf(commandArgs[0].toUpperCase().substring(2));
-                    c.execute(commandArgs, answer, file.getAbsolutePath(), this, admin);
+                    c.execute(commandArgs, answer, file, this, admin);
                 }else{
                     System.out.println("<< for read commands, >> for write commands, >>help and <<help");
                 }
@@ -40,7 +43,7 @@ public class FileEditApp implements App{
                     if (answer.startsWith(">>")) {
                         try {
                             answer = answer.substring(2);
-                            answer = getAllLines() + answer;
+                            answer = getAllLines(this.file) + answer;
                             FileOutputStream fos = new FileOutputStream(file);
                             fos.write(answer.getBytes());
                             fos.close();
@@ -69,11 +72,7 @@ public class FileEditApp implements App{
         }
     }
 
-    public static Scanner getScanner() { // pour vider la mémoire du scanner à chaque fois et éviter les erreurs
-        return new Scanner(System.in);
-    }
-
-    public String getAllLines() throws FileNotFoundException {
+    public static String getAllLines(File file) throws FileNotFoundException {
         Scanner sc = new Scanner(file);
         StringBuilder answer = new StringBuilder();
         while (sc.hasNextLine()) {

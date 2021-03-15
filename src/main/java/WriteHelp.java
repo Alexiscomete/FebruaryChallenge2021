@@ -1,10 +1,11 @@
 import Admin.Admin;
 
+import java.io.File;
+
 public class WriteHelp extends CommandFileEdit {
 
     @Override
-    public void execute(String[] args, String command, String path, FileEditApp app, Admin admin) {
+    public void execute(String[] args, String command, File file, FileEditApp app, Admin admin) {
         System.out.println("Use >> to write a lign");
-
     }
 }
