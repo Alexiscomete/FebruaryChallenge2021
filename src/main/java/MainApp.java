@@ -41,7 +41,7 @@ public class MainApp implements App {
             String[] commandArgs = answer.split(" ");
             try {
                 CommandsEnum c = CommandsEnum.valueOf(commandArgs[0].toUpperCase());
-                c.execute(commandArgs, answer, path, this);
+                c.execute(commandArgs, answer, path, this, admin);
             }catch (IllegalArgumentException e) {
                 if (!answer.equals("stop")) System.out.println("This is not a command, use help");
             }

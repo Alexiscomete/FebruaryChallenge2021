@@ -1,3 +1,5 @@
+import Admin.Admin;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -5,7 +7,7 @@ import java.io.IOException;
 public class OpenDesktop extends Command{
 
     @Override
-    public void execute(String[] args, String command, String path, MainApp app) {
+    public void execute(String[] args, String command, String path, MainApp app, Admin admin) {
         try {
             Desktop.getDesktop().open((new File(path)));
             System.out.println("The directory is open on your desktop");

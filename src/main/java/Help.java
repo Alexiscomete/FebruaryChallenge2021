@@ -1,7 +1,9 @@
+import Admin.Admin;
+
 public class Help extends Command{
 
     @Override
-    public void execute(String[] args, String command, String path, MainApp app) {
+    public void execute(String[] args, String command, String path, MainApp app, Admin admin) {
         System.out.println("Help");
         System.out.println("- help : ...");
         System.out.println("- od : open directory on desktop");

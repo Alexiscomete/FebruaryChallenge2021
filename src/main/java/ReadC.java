@@ -1,17 +1,19 @@
+import Admin.Admin;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ReadC extends Command{
     @Override
-    public void execute(String[] args, String command, String path, MainApp app) {
+    public void execute(String[] args, String command, String path, MainApp app, Admin admin) {
         if (args.length > 1) {
             File file = new File(path + "/" + args[1]);
             if (file.exists()) {
                 if(file.isDirectory()) {
                     System.out.println("rc -> list");
                     args = new String[]{"list"};
-                    CommandsEnum.LIST.execute(args, command, path, app);
+                    CommandsEnum.LIST.execute(args, command, path, app, admin);
                 }else {
                     try {
                         Scanner sc = new Scanner(file);

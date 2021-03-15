@@ -1,11 +1,11 @@
+import Admin.Admin;
+
 import java.io.File;
-import java.net.URI;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class ChangeDirectory extends Command{
     @Override
-    public void execute(String[] args, String command, String path, MainApp app) {
+    public void execute(String[] args, String command, String path, MainApp app, Admin admin) {
         String newPath = command.substring(3);
         if (!newPath.startsWith(".")) {
             File file = new File(newPath);

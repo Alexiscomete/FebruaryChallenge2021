@@ -1,8 +1,10 @@
+import Admin.Admin;
+
 import java.io.File;
 
 public class TreeCommand extends Command{
     @Override
-    public void execute(String[] args, String command, String path, MainApp app) {
+    public void execute(String[] args, String command, String path, MainApp app, Admin admin) {
         if (args.length > 1) {
             if (args.length > 2) {
                 sendDirectorySizeAndTree(path, 0);

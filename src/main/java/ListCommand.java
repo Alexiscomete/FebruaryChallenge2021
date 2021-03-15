@@ -1,8 +1,10 @@
+import Admin.Admin;
+
 import java.io.File;
 
 public class ListCommand extends Command {
     @Override
-    public void execute(String[] args, String command, String path, MainApp app) {
+    public void execute(String[] args, String command, String path, MainApp app, Admin admin) {
         File file = new File(path);
         String[] list = file.list();
         if (list == null) {

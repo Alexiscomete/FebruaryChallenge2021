@@ -1,14 +1,17 @@
+import Admin.Admin;
+
 import java.io.*;
 import java.util.Scanner;
-import FileEditApp.*;
 
 public class FileEditApp implements App{
     String fileName;
     File file;
+    Admin admin;
 
-    public FileEditApp(String fileName, File file) {
+    public FileEditApp(String fileName, File file, Admin admin) {
         this.fileName = fileName;
         this.file = file;
+        this.admin = admin;
         mainLoop();
     }
 
@@ -24,10 +27,10 @@ public class FileEditApp implements App{
             try {
                 if (answer.startsWith(">>")) {
                     CommandsEnumWrite c = CommandsEnumWrite.valueOf(commandArgs[0].toUpperCase().substring(2));
-                    c.execute(commandArgs, answer, file.getAbsolutePath());
+                    c.execute(commandArgs, answer, file.getAbsolutePath(), this, admin);
                 }else if (answer.startsWith("<<")){
                     CommandsEnumRead c = CommandsEnumRead.valueOf(commandArgs[0].toUpperCase().substring(2));
-                    c.execute(commandArgs, answer, file.getAbsolutePath());
+                    c.execute(commandArgs, answer, file.getAbsolutePath(), this, admin);
                 }else{
                     System.out.println("<< for read commands, >> for write commands, >>help and <<help");
                 }
