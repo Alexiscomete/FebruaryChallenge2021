@@ -34,5 +34,6 @@ public class FileEditAllLigne extends CommandFileEdit {
         w.container.add(top, BorderLayout.NORTH);
         w.setContentPane(w.container);
         w.setVisible(true);
+        w.waitClosed();
     }
 }

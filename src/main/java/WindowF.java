@@ -32,6 +32,7 @@ public class WindowF extends JFrame implements WindowListener {
     @Override
     public void windowClosed(WindowEvent e) {
         System.out.println("Window closed: " + e.getWindow().getName());
+        windows.replace(e.getWindow().getName(), false);
     }
 
     @Override
@@ -52,5 +53,18 @@ public class WindowF extends JFrame implements WindowListener {
     @Override
     public void windowDeactivated(WindowEvent e) {
         System.out.println("I am a ... I don't know");
+    }
+
+    public void waitClosed() {
+        int i = 100; //pour éviter de manger tout le processeur
+        boolean test = true;
+        while (test) {
+            i--;
+            if (i == 0) {
+                test = windows.get(this.getName());
+                i = 100;
+            }
+        }
+        windows.remove(this.getName());
     }
 }
