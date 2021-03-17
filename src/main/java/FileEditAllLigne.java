@@ -5,10 +5,9 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class FileEditAllLigne extends CommandFileEdit{
+public class FileEditAllLigne extends CommandFileEdit {
     @Override
     public void execute(String[] args, String command, File file, FileEditApp app, Admin admin) {
-        WindowF w = new WindowF("FileEdit", 800, 400);
         String content;
         try {
              content = FileEditApp.getAllLines(file);
@@ -16,7 +15,7 @@ public class FileEditAllLigne extends CommandFileEdit{
             System.out.println("???");
             return;
         }
-        JTextField jtf = new JTextField(content);
+        JTextArea jtf = new JTextArea(content);
         Font f = new Font("monospace", Font.PLAIN, 14);
         jtf.setFont(f);
         String[] strings = content.split("\n");
@@ -26,7 +25,7 @@ public class FileEditAllLigne extends CommandFileEdit{
                 maxSize = str.length();
             }
         }
-        jtf.setPreferredSize(new Dimension(maxSize * 20, strings.length * 20));
+        WindowF w = new WindowF("FileEdit", maxSize * 15, strings.length * 25);
         jtf.setForeground(Color.WHITE);
         jtf.setBackground(Color.BLACK);
         JPanel top = new JPanel();
