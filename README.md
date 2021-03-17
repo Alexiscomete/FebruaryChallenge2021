@@ -7,3 +7,11 @@ La participation à celui du mois de mars est inclu
 ## Utilisation
 
 Téléchargez le .jar et le .bat qui sont dans le out, lancez le .bat
+
+## Fonctionnalités 
+
+- navigation dans l'arborescence de l'ordinateur 
+- affichage de l'arborescence 
+- lire un fichier 
+- écrire à la suite d'un fichier 
+- automatiser des commandes à l'aide d'un fichier txt
