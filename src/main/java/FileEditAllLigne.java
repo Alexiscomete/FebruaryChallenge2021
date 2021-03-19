@@ -12,7 +12,7 @@ public class FileEditAllLigne extends CommandFileEdit {
     public void execute(String[] args, String command, File file, FileEditApp app, Admin admin) {
         String content;
         try {
-             content = FileEditApp.getAllLines(file);
+            content = FileEditApp.getAllLines(file);
         } catch (FileNotFoundException e) {
             System.out.println("???");
             return;
@@ -30,45 +30,44 @@ public class FileEditAllLigne extends CommandFileEdit {
         WindowF w = new WindowF("FileEdit", maxSize * 25, strings.length * 40) {
             @Override
             public void waitClosed() {
-                int maxLine = jtf.getText().split("\n").length;
                 while (wait) {
                     String text = jtf.getText();
                     String[] lines = text.split("\n");
                     int pos = jtf.getCaretPosition();
                     int lineI = getLine(text, pos);
                     String line = lines[lineI];
-                    if (maxLine < lines.length) {
-                        if (text.endsWith("{\n")) {
-                            int n = 0;
-                            char c = line.charAt(0);
-                            StringBuilder pre = new StringBuilder();
-                            while (c == ' ') {
-                                n++;
-                                pre.append(" ");
-                                c = line.charAt(n);
-                                if (n == line.length()-1) {
-                                    c = 'a';
-                                }
+                    if (line.endsWith("{\n")) {
+                        int n = 0;
+                        char c = line.charAt(0);
+                        StringBuilder pre = new StringBuilder();
+                        while (c == ' ') {
+                            n++;
+                            pre.append(" ");
+                            c = line.charAt(n);
+                            if (n == line.length() - 1) {
+                                c = 'a';
                             }
-                            String test = pre + "      \n" + pre + "}";
-                            jtf.insert(test, getEndLine(text, lineI));
-                            jtf.setCaretPosition(getEndLine(text, lineI));
-                        }else if (text.endsWith("\n")) {
-                            int n = 0;
-                            char c = line.charAt(0);
-                            StringBuilder pre = new StringBuilder();
-                            while (c == ' ') {
-                                n++;
-                                pre.append(" ");
-                                c = line.charAt(n);
-                                if (n == line.length()-1) {
-                                    c = 'a';
-                                }
-                            }
-                            jtf.append(String.valueOf(pre));
                         }
-                    }else{
-                        maxLine = lines.length;
+                        String test = pre + "      \n" + pre + "}";
+                        jtf.insert(test, getEndLine(text, lineI));
+                        jtf.setCaretPosition(getEndLine(text, lineI));
+                    } else if (line.endsWith("\n")) {
+                        int n = 0;
+                        char c = line.charAt(0);
+                        StringBuilder pre = new StringBuilder();
+                        while (c == ' ') {
+                            n++;
+                            pre.append(" ");
+                            c = line.charAt(n);
+                            if (n == line.length() - 1) {
+                                c = 'a';
+                            }
+                        }
+                        jtf.append(String.valueOf(pre));
+                    } else if (text.split("\\{").length != text.split("}").length) {
+                        jtf.setForeground(Color.RED);
+                    } else {
+                        jtf.setForeground(Color.WHITE);
                     }
                     try {
                         Thread.sleep(100);
