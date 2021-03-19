@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class FileEditAllLigne extends CommandFileEdit {
     @Override
@@ -85,13 +87,23 @@ public class FileEditAllLigne extends CommandFileEdit {
         w.setContentPane(w.container);
         w.setVisible(true);
         w.waitClosed();
+        FileOutputStream fos;
+        try {
+            fos = new FileOutputStream(file);
+            fos.write(jtf.getText().getBytes());
+            fos.close();
+        } catch (IOException e) {
+            System.out.println("Error!");
+            JOptionPane.showMessageDialog(null, "Error : save impossible ", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public static int getLine(String text, int pos) {
         String[] lines = text.split("\n");
         int n = 0;
         for (int i = 0; i < lines.length; i++) {
-            if (pos > n) {
+            n += lines[i].length();
+            if (pos < n) {
                 return i;
             }
         }
@@ -102,7 +114,7 @@ public class FileEditAllLigne extends CommandFileEdit {
         String[] lines = text.split("\n");
         int n = 0;
         for (int i = 0; i < line + 1; i++) {
-            n += lines[line].length();
+            n += lines[i].length();
         }
         return n;
     }
