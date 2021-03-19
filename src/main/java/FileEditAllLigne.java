@@ -49,7 +49,7 @@ public class FileEditAllLigne extends CommandFileEdit {
                             }
                         }
                         String test = pre + "      \n" + pre + "}";
-                        jtf.insert(test, getEndLine(text, lineI));
+                        jtf.insert(test, pos);
                         jtf.setCaretPosition(getEndLine(text, lineI));
                     } else if (line.equals("")) {
                         int n = 0;
@@ -63,7 +63,7 @@ public class FileEditAllLigne extends CommandFileEdit {
                                 c = 'a';
                             }
                         }
-                        jtf.insert(String.valueOf(pre), getEndLine(text, lineI));
+                        jtf.insert(String.valueOf(pre), pos);
                         jtf.setCaretPosition(getEndLine(text, lineI));
                     } else if (text.split("\\{").length != text.split("}").length) {
                         jtf.setForeground(Color.RED);
