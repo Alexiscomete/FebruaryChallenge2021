@@ -51,19 +51,20 @@ public class FileEditAllLigne extends CommandFileEdit {
                         String test = pre + "      \n" + pre + "}";
                         jtf.insert(test, getEndLine(text, lineI));
                         jtf.setCaretPosition(getEndLine(text, lineI));
-                    } else if (line.endsWith("\n")) {
+                    } else if (line.equals("")) {
                         int n = 0;
-                        char c = line.charAt(0);
+                        char c = lines[lineI-1].charAt(0);
                         StringBuilder pre = new StringBuilder();
                         while (c == ' ') {
                             n++;
                             pre.append(" ");
-                            c = line.charAt(n);
-                            if (n == line.length() - 1) {
+                            c = lines[lineI-1].charAt(n);
+                            if (n == lines[lineI-1].length() - 1) {
                                 c = 'a';
                             }
                         }
-                        jtf.append(String.valueOf(pre));
+                        jtf.insert(String.valueOf(pre), getEndLine(text, lineI));
+                        jtf.setCaretPosition(getEndLine(text, lineI));
                     } else if (text.split("\\{").length != text.split("}").length) {
                         jtf.setForeground(Color.RED);
                     } else {
