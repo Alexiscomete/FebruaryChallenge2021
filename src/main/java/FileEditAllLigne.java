@@ -30,43 +30,49 @@ public class FileEditAllLigne extends CommandFileEdit {
         WindowF w = new WindowF("FileEdit", maxSize * 25, strings.length * 40) {
             @Override
             public void waitClosed() {
+                System.out.println("A window has been open");
                 while (wait) {
                     String text = jtf.getText();
                     String[] lines = text.split("\n");
                     int pos = jtf.getCaretPosition();
                     int lineI = getLine(text, pos);
                     String line = lines[lineI];
-                    if (line.endsWith("{\n")) {
+                    if (line.endsWith("{\n") && lines.length > 1) {
                         int n = 0;
-                        char c = line.charAt(0);
+                        String line0 = lines[lineI - 1];
+                        char c = line0.charAt(0);
                         StringBuilder pre = new StringBuilder();
                         while (c == ' ') {
                             n++;
                             pre.append(" ");
-                            c = line.charAt(n);
-                            if (n == line.length() - 1) {
+                            c = line0.charAt(n);
+                            if (n == line0.length() - 1) {
                                 c = 'a';
                             }
                         }
                         String test = pre + "      \n" + pre + "}";
                         jtf.insert(test, pos);
                         jtf.setCaretPosition(getEndLine(text, lineI));
-                    } else if (line.equals("")) {
+                    } else if (line.equals("") && lines.length > 1) {
                         int n = 0;
-                        char c = lines[lineI-1].charAt(0);
+                        String line0 = lines[lineI - 1];
+                        char c = line0.charAt(0);
                         StringBuilder pre = new StringBuilder();
                         while (c == ' ') {
                             n++;
                             pre.append(" ");
-                            c = lines[lineI-1].charAt(n);
-                            if (n == lines[lineI-1].length() - 1) {
+                            c = line0.charAt(n);
+                            if (n == line0.length() - 1) {
                                 c = 'a';
                             }
                         }
                         jtf.insert(String.valueOf(pre), pos);
                         jtf.setCaretPosition(getEndLine(text, lineI));
-                    } else if (text.split("\\{").length != text.split("}").length) {
+                    } else if (getNumberOfChar('{', text) != getNumberOfChar('}', text)) {
                         jtf.setForeground(Color.RED);
+                        if (Math.abs(getNumberOfChar('{', text) - getNumberOfChar('}', text)) > 30) {
+                            JOptionPane.showMessageDialog(null, "Difference between number of '{' and number of '}' is very big!", "Warning!", JOptionPane.WARNING_MESSAGE);
+                        }
                     } else {
                         jtf.setForeground(Color.WHITE);
                     }
@@ -75,6 +81,7 @@ public class FileEditAllLigne extends CommandFileEdit {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+
                 }
             }
         };
@@ -117,5 +124,15 @@ public class FileEditAllLigne extends CommandFileEdit {
             n += lines[i].length();
         }
         return n;
+    }
+
+    public static int getNumberOfChar(char c, String text) {
+        int count = 0;
+
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == c)
+                count++;
+        }
+        return count;
     }
 }
