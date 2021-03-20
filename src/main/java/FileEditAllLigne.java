@@ -70,9 +70,6 @@ public class FileEditAllLigne extends CommandFileEdit {
                         jtf.setCaretPosition(getEndLine(text, lineI));
                     } else if (getNumberOfChar('{', text) != getNumberOfChar('}', text)) {
                         jtf.setForeground(Color.RED);
-                        if (Math.abs(getNumberOfChar('{', text) - getNumberOfChar('}', text)) > 30) {
-                            JOptionPane.showMessageDialog(null, "Difference between number of '{' and number of '}' is very big!", "Warning!", JOptionPane.WARNING_MESSAGE);
-                        }
                     } else {
                         jtf.setForeground(Color.WHITE);
                     }
