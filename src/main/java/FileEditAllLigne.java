@@ -21,20 +21,15 @@ public class FileEditAllLigne extends CommandFileEdit {
         Font f = new Font("monospace", Font.PLAIN, 14);
         jtf.setFont(f);
         String[] strings = content.split("\n");
-        int maxSize = 0;
-        for (String str : strings) {
-            if (str.length() > maxSize) {
-                maxSize = str.length();
-            }
-        }
-        WindowF w = new WindowF("FileEdit", maxSize * 25, strings.length * 40) {
+
+        WindowF w = new WindowF("FileEdit", 800, 500) {
             @Override
             public void waitClosed() {
                 System.out.println("A window has been open");
                 while (wait) {
                     String text = jtf.getText();
+                    String[] lines = text.split("\n");
                     if (text.length() > 1) {
-                        String[] lines = text.split("\n");
                         int pos = jtf.getCaretPosition();
                         int lineI = getLine(text, pos);
                         String line = lines[lineI];
@@ -80,16 +75,28 @@ public class FileEditAllLigne extends CommandFileEdit {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-
+                    int maxSize = 0;
+                    for (String str : lines) {
+                        if (str.length() > maxSize) {
+                            maxSize = str.length();
+                        }
+                    }
+                    //jtf.setPreferredSize(new Dimension(200 + maxSize * 10, 200 + lines.length * 10));
                 }
             }
         };
         jtf.setForeground(Color.WHITE);
         jtf.setBackground(Color.BLACK);
-        JPanel top = new JPanel();
-        top.setBackground(Color.BLACK);
-        top.add(jtf);
-        w.container.add(top, BorderLayout.WEST);
+        /*
+        JPanel pa = new JPanel();
+        pa.setBackground(Color.BLACK);
+        pa.add(jtf);
+
+         */
+        jtf.setSize(new Dimension(200, 200));
+        JScrollPane p = new JScrollPane();
+        p.add(jtf);
+        w.container.add(p, BorderLayout.WEST);
         w.setContentPane(w.container);
         w.setVisible(true);
         w.waitClosed();
