@@ -33,45 +33,47 @@ public class FileEditAllLigne extends CommandFileEdit {
                 System.out.println("A window has been open");
                 while (wait) {
                     String text = jtf.getText();
-                    String[] lines = text.split("\n");
-                    int pos = jtf.getCaretPosition();
-                    int lineI = getLine(text, pos);
-                    String line = lines[lineI];
-                    if (line.endsWith("{\n") && lines.length > 1) {
-                        int n = 0;
-                        String line0 = lines[lineI - 1];
-                        char c = line0.charAt(0);
-                        StringBuilder pre = new StringBuilder();
-                        while (c == ' ') {
-                            n++;
-                            pre.append(" ");
-                            c = line0.charAt(n);
-                            if (n == line0.length() - 1) {
-                                c = 'a';
+                    if (text.length() > 1) {
+                        String[] lines = text.split("\n");
+                        int pos = jtf.getCaretPosition();
+                        int lineI = getLine(text, pos);
+                        String line = lines[lineI];
+                        if (line.endsWith("{\n") && lines.length > 1) {
+                            int n = 0;
+                            String line0 = lines[lineI - 1];
+                            char c = line0.charAt(0);
+                            StringBuilder pre = new StringBuilder();
+                            while (c == ' ') {
+                                n++;
+                                pre.append(" ");
+                                c = line0.charAt(n);
+                                if (n == line0.length() - 1) {
+                                    c = 'a';
+                                }
                             }
-                        }
-                        String test = pre + "      \n" + pre + "}";
-                        jtf.insert(test, pos);
-                        jtf.setCaretPosition(getEndLine(text, lineI));
-                    } else if (line.equals("") && lines.length > 1) {
-                        int n = 0;
-                        String line0 = lines[lineI - 1];
-                        char c = line0.charAt(0);
-                        StringBuilder pre = new StringBuilder();
-                        while (c == ' ') {
-                            n++;
-                            pre.append(" ");
-                            c = line0.charAt(n);
-                            if (n == line0.length() - 1) {
-                                c = 'a';
+                            String test = pre + "      \n" + pre + "}";
+                            jtf.insert(test, pos);
+                            jtf.setCaretPosition(getEndLine(text, lineI));
+                        } else if (line.equals("") && lines.length > 1) {
+                            int n = 0;
+                            String line0 = lines[lineI - 1];
+                            char c = line0.charAt(0);
+                            StringBuilder pre = new StringBuilder();
+                            while (c == ' ') {
+                                n++;
+                                pre.append(" ");
+                                c = line0.charAt(n);
+                                if (n == line0.length() - 1) {
+                                    c = 'a';
+                                }
                             }
+                            jtf.insert(String.valueOf(pre), pos);
+                            jtf.setCaretPosition(getEndLine(text, lineI));
+                        } else if (getNumberOfChar('{', text) != getNumberOfChar('}', text)) {
+                            jtf.setForeground(Color.RED);
+                        } else {
+                            jtf.setForeground(Color.WHITE);
                         }
-                        jtf.insert(String.valueOf(pre), pos);
-                        jtf.setCaretPosition(getEndLine(text, lineI));
-                    } else if (getNumberOfChar('{', text) != getNumberOfChar('}', text)) {
-                        jtf.setForeground(Color.RED);
-                    } else {
-                        jtf.setForeground(Color.WHITE);
                     }
                     try {
                         Thread.sleep(100);
