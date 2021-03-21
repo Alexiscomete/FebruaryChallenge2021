@@ -5,7 +5,8 @@ import java.io.File;
 public enum CommandsEnumWrite {
 
     CLEAR(new Clear()),
-    FEAL(new FileEditAllLigne()),
+    FEAL(new FileEditAllLines()),
+    FRAL(new FileReplaceAllLines()),
     HELP(new WriteHelp());
 
     private final CommandFileEdit c;
