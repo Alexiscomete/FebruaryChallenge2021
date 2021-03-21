@@ -18,7 +18,7 @@ public class FileEditAllLigne extends CommandFileEdit {
             return;
         }
         JTextArea jtf = new JTextArea(content);
-        Font f = new Font("monospace", Font.PLAIN, 14);
+        Font f = new Font("monospace", Font.PLAIN, 18);
         jtf.setFont(f);
         String[] strings = content.split("\n");
 
@@ -85,20 +85,16 @@ public class FileEditAllLigne extends CommandFileEdit {
                 }
             }
         };
+        w.setResizable(false);
         jtf.setForeground(Color.WHITE);
         jtf.setBackground(Color.BLACK);
-        /*
-        JPanel pa = new JPanel();
-        pa.setBackground(Color.BLACK);
-        pa.add(jtf);
-
-         */
         jtf.setSize(new Dimension(200, 200));
-        JScrollPane p = new JScrollPane();
-        p.add(jtf);
+        JScrollPane p = new JScrollPane(jtf);
+        p.setPreferredSize(new Dimension(800, 480));
         w.container.add(p, BorderLayout.WEST);
         w.setContentPane(w.container);
         w.setVisible(true);
+        w.toFront();
         w.waitClosed();
         FileOutputStream fos;
         try {
