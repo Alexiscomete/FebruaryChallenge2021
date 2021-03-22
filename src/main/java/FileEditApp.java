@@ -26,16 +26,8 @@ public class FileEditApp extends App{
             answer = sc.getScanner().nextLine();
             String[] commandArgs = answer.split(" ");
             try {
-                if (answer.startsWith(">>")) {
-                    CommandsEnumWrite c = CommandsEnumWrite.valueOf(commandArgs[0].toUpperCase().substring(2));
-                    c.execute(commandArgs, answer, file, this, admin);
-                }else if (answer.startsWith("<<")){
-                    CommandsEnumRead c = CommandsEnumRead.valueOf(commandArgs[0].toUpperCase().substring(2));
-                    c.execute(commandArgs, answer, file, this, admin);
-                }else{
-                    System.out.println("<< for read commands, >> for write commands, >>help and <<help");
-                }
-
+                CommandsEnumEditFile c = CommandsEnumEditFile.valueOf(commandArgs[0].toUpperCase());
+                c.execute(commandArgs, answer, file, this, admin);
             }catch (IllegalArgumentException e) {
                 if (!answer.equals("stop")) {
                     if (answer.startsWith(">>")) {
@@ -64,6 +56,8 @@ public class FileEditApp extends App{
                         } catch (FileNotFoundException fileNotFoundException) {
                             fileNotFoundException.printStackTrace();
                         }
+                    }else {
+                        System.out.println("<< for read commands, >> for write commands, >>help and <<help");
                     }
                 }
             }

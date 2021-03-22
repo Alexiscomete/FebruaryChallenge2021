@@ -2,16 +2,20 @@ import Admin.Admin;
 
 import java.io.File;
 
-public enum CommandsEnumRead {
+public enum CommandsEnumEditFile {
 
-    HELP(new ReadHelp());
+    CLEAR(new Clear()),
+    FEAL(new FileEditAllLines()),
+    FRAL(new FileReplaceAllLines()),
+    HELP(new HelpEdit());
 
     private final CommandFileEdit c;
 
-    CommandsEnumRead(CommandFileEdit command) {
-        this.c = command;
+    CommandsEnumEditFile(CommandFileEdit c) {
+        this.c = c;
     }
 
     public void execute(String[] args, String command, File file, FileEditApp app, Admin admin) {
         this.c.execute(args, command, file, app, admin);
-    }}
+    }
+}
