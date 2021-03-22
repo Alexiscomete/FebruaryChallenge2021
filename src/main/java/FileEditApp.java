@@ -20,7 +20,7 @@ public class FileEditApp extends App{
     public void mainLoop() {
         String answer = "";
         System.out.println("Welcome to the text editor");
-        System.out.println("<< for read commands, >> for write commands, >>help and <<help");
+        System.out.println("<< for read, >> for write, use help");
         while (!answer.equals("stop")) {
             System.out.print("|]" + fileName + "[| -> ");
             answer = sc.getScanner().nextLine();
