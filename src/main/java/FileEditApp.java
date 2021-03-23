@@ -30,7 +30,7 @@ public class FileEditApp extends App{
                 c.execute(commandArgs, answer, file, this, admin);
             }catch (IllegalArgumentException e) {
                 if (!answer.equals("stop")) {
-                    if (answer.startsWith(">>")) {
+                    if (answer.startsWith("<<")) {
                         try {
                             answer = answer.substring(2);
                             answer = getAllLines(this.file) + answer;
@@ -40,7 +40,7 @@ public class FileEditApp extends App{
                         } catch (IOException fileNotFoundException) {
                             System.out.println("IOException");
                         }
-                    }else if (answer.startsWith("<<")) {
+                    }else if (answer.startsWith(">>")) {
                         try {
                             Scanner sc = new Scanner(file);
                             if (answer.length() == 2) {
