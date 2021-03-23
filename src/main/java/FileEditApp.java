@@ -56,8 +56,8 @@ public class FileEditApp extends App{
                         } catch (FileNotFoundException fileNotFoundException) {
                             fileNotFoundException.printStackTrace();
                         }
-                    }else {
-                        System.out.println("<< for read commands, >> for write commands, >>help and <<help");
+                    } else {
+                        System.out.println("<< to print the file, >> for write a line in the file, use help");
                     }
                 }
             }
