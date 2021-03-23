@@ -14,10 +14,10 @@ public class ChangeDirectory extends Command{
                     app.path = newPath;
                     System.out.println("The path has been changed");
                 }else {
-                    System.out.println("This is not a directory");
+                    System.out.println("This is not a directory, think to use the / or \\");
                 }
             }else {
-                System.out.println("You can only enter an existing directory");
+                System.out.println("You can only enter an existing directory, think to use the / or \\");
 
             }
         }else {

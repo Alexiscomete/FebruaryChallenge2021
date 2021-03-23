@@ -2,6 +2,8 @@ import Admin.Admin;
 import Scanners.GetScanner;
 
 import java.io.File;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Paths;
 
 public class MainApp extends App {
 
@@ -19,13 +21,20 @@ public class MainApp extends App {
         File file = new File(path);
         if (file.exists()) {
             if (!file.isDirectory()) {
-                System.out.println("This is not a directory, open C:/");
-                path = "C:/";
+                System.out.println("This is not a directory, open project directory, think to use the / or \\ (like C:/)");
+                try {
+                    path = Paths.get(getClass().getResource("Main.class").getPath() + "/../").normalize().toString();
+                }catch (InvalidPathException e) {
+                    path = Paths.get((getClass().getResource("Main.class").getPath() + "/../").substring(1)).normalize().toString();
+                }
             }
         }else {
-            System.out.println("You can only enter an existing directory, open C:/");
-            path = "C:/";
-
+            System.out.println("You can only enter an existing directory, open project directory, think to use the / or \\ (like C:/)");
+            try {
+                path = Paths.get(getClass().getResource("Main.class").getPath() + "/../").normalize().toString();
+            }catch (InvalidPathException e) {
+                path = Paths.get((getClass().getResource("Main.class").getPath() + "/../").substring(1)).normalize().toString();
+            }
         }
         answer = path;
         mainLoop();
