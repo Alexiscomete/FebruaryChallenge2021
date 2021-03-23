@@ -50,8 +50,16 @@ public class FileEditApp extends App{
                             }else{
                                 String arg = commandArgs[0].toUpperCase().substring(2);
                                 int n = Integer.parseInt(arg);
-                                for (int i = 0; i < n; i++) sc.nextLine();
-                                System.out.println(sc.nextLine());
+                                for (int i = 0; i < n; i++) {
+                                    if (sc.hasNextLine()) {
+                                        sc.nextLine();
+                                    }else {
+                                        i = n;
+                                    }
+                                }
+                                if (sc.hasNextLine()) System.out.println(sc.nextLine()); else {
+                                    System.out.println("This line ....... .... ....... not exist");
+                                }
                             }
                         } catch (FileNotFoundException fileNotFoundException) {
                             fileNotFoundException.printStackTrace();
