@@ -14,7 +14,7 @@ public class Clear implements CommandFileEdit {
                 fos.write("".getBytes());
                 fos.close();
             } catch (IOException e) {
-                System.out.println("Erreur !");
+                System.out.println("Error!");
             }
         }
     }
