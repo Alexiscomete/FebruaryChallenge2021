@@ -1,3 +1,6 @@
+Wiki in english : https://github.com/Alexiscomete/FebruaryChallenge2021/wiki
+(Wiki in french : https://github.com/Alexiscomete/FebruaryChallenge2021/wiki/Accueil)
+
 # FebruaryChallenge2021
 Participation au défi du mois de février 2021 pour le serveur Discord "ceux qui savent coder mais qui n'ont pas d'idées"
 
