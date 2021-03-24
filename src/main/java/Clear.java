@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class Clear extends CommandFileEdit {
+public class Clear implements CommandFileEdit {
     @Override
     public void execute(String[] args, String command, File file, FileEditApp app, Admin admin) {
         if (admin.isAdmin("clear a file")) {

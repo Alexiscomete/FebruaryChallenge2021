@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class FileReplaceAllLines extends CommandFileEdit {
+public class FileReplaceAllLines implements CommandFileEdit {
     @Override
     public void execute(String[] args, String command, File file, FileEditApp app, Admin admin) {
         if (admin.isAdmin("replace all lines in a file")) {

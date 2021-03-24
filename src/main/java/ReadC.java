@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class ReadC extends Command{
+public class ReadC implements Command {
     @Override
     public void execute(String[] args, String command, String path, MainApp app, Admin admin) {
         if (args.length > 1) {

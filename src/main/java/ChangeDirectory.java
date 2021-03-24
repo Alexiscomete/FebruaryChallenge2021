@@ -3,7 +3,7 @@ import Admin.Admin;
 import java.io.File;
 import java.nio.file.Paths;
 
-public class ChangeDirectory extends Command{
+public class ChangeDirectory implements Command {
     @Override
     public void execute(String[] args, String command, String path, MainApp app, Admin admin) {
         String newPath = command.substring(3);

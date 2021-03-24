@@ -1,6 +1,6 @@
 import Admin.Admin;
 
-public class Help extends Command{
+public class Help implements Command {
 
     @Override
     public void execute(String[] args, String command, String path, MainApp app, Admin admin) {

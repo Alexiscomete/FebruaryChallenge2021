@@ -2,7 +2,7 @@ import Admin.Admin;
 
 import java.io.File;
 
-public class TreeCommand extends Command{
+public class TreeCommand implements Command {
     @Override
     public void execute(String[] args, String command, String path, MainApp app, Admin admin) {
         if (args.length > 1) {

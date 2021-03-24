@@ -2,8 +2,8 @@ package Admin;
 
 public enum AdminList {
 
-    YES(new IsAdmin()),
-    NO(new NotAdmin()),
+    YES(String -> true),
+    NO(String -> false),
     ASK(new AskAdmin());
 
     public Admin ad;

@@ -4,7 +4,7 @@ import Admin.Admin;
 
 import java.io.File;
 
-public class FileEdit extends Command{
+public class FileEdit implements Command {
 
     @Override
     public void execute(String[] args, String command, String path, MainApp app, Admin admin) {

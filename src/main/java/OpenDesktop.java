@@ -4,7 +4,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class OpenDesktop extends Command{
+public class OpenDesktop implements Command {
 
     @Override
     public void execute(String[] args, String command, String path, MainApp app, Admin admin) {

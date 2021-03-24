@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class FileEditAllLines extends CommandFileEdit {
+public class FileEditAllLines implements CommandFileEdit {
     @Override
     public void execute(String[] args, String command, File file, FileEditApp app, Admin admin) {
         String content;
@@ -20,7 +20,6 @@ public class FileEditAllLines extends CommandFileEdit {
         JTextArea jtf = new JTextArea(content);
         Font f = new Font("monospace", Font.PLAIN, 18);
         jtf.setFont(f);
-        String[] strings = content.split("\n");
 
         WindowF w = new WindowF("FileEdit", 800, 500) {
             @Override

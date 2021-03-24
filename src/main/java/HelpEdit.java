@@ -2,7 +2,7 @@ import Admin.Admin;
 
 import java.io.File;
 
-public class HelpEdit extends CommandFileEdit {
+public class HelpEdit implements CommandFileEdit {
 
     @Override
     public void execute(String[] args, String command, File file, FileEditApp app, Admin admin) {

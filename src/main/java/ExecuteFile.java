@@ -4,7 +4,7 @@ import Scanners.FileScanner;
 
 import java.io.File;
 
-public class ExecuteFile extends Command{
+public class ExecuteFile implements Command {
     @Override
     public void execute(String[] args, String command, String path, MainApp app, Admin admin) {
         System.out.println("Enter a file to start application");
