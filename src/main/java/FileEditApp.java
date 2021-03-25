@@ -79,6 +79,6 @@ public class FileEditApp extends App{
             answer.append(sc.nextLine());
             answer.append("\n");
         }
-        return answer.toString();
+        return String.valueOf(answer);
     }
 }
