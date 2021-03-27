@@ -22,10 +22,12 @@ public class MainApp extends App {
         if (file.exists()) {
             if (!file.isDirectory()) {
                 System.out.println("This is not a directory, open project directory, think to use the / or \\ (like C:/)");
+                String p = Main.class.getResource("Main.class").getPath();
+                String first = p.substring(0, p.lastIndexOf('!')) + "/../";
                 try {
-                    path = Paths.get(getClass().getResource("Main.class").getPath() + "/../").normalize().toString();
-                }catch (InvalidPathException e) {
-                    path = Paths.get((getClass().getResource("Main.class").getPath() + "/../").substring(1)).normalize().toString();
+                    path = Paths.get(first).normalize().toString();
+                } catch (InvalidPathException e) {
+                    path = Paths.get((first).substring(1)).normalize().toString();
                 }
             }
         }else {
