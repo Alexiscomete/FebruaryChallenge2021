@@ -7,7 +7,8 @@ public enum CommandsEnumEditFile {
     CLEAR(new Clear()),
     FEAL(new FileEditAllLines()),
     FRAL(new FileReplaceAllLines()),
-    HELP(new HelpEdit());
+    HELP(new HelpEdit()),
+    RF(new RemoveFile());
 
     private final CommandFileEdit c;
 

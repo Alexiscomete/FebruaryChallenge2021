@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class FileEditApp extends App{
     public String fileName;
     public File file;
+    public String answer;
 
     public FileEditApp(String fileName, File file, Admin admin, GetScanner sc) {
         this.fileName = fileName;
@@ -18,7 +19,7 @@ public class FileEditApp extends App{
 
     @Override
     public void mainLoop() {
-        String answer = "";
+        answer = "";
         System.out.println("Welcome to the text editor");
         System.out.println("<< for read, >> for write, use help");
         while (!answer.equals("stop")) {
