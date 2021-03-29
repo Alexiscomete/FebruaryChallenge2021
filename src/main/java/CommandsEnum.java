@@ -11,7 +11,8 @@ public enum CommandsEnum {
     FE(new FileEdit()),
     EF(new ExecuteFile()),
     CNF(new CreateNewFile()),
-    SAY(new Say());
+    SAY(new Say()),
+    SAYALL(new SayAll());
 
     private final Command c;
 

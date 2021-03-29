@@ -14,5 +14,8 @@ public class Help implements Command {
         System.out.println("- rc : read a file");
         System.out.println("- fe : open file : more option like edit");
         System.out.println("- ef : execute a file !");
+        System.out.println("- cnf : create a new file");
+        System.out.println("- say : System.out.println");
+        System.out.println("- sayall : say with a lot of lines");
     }
 }
