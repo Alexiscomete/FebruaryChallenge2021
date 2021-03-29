@@ -9,7 +9,9 @@ public enum CommandsEnum {
     CD(new ChangeDirectory()),
     RC(new ReadC()),
     FE(new FileEdit()),
-    EF(new ExecuteFile());
+    EF(new ExecuteFile()),
+    CNF(new CreateNewFile()),
+    SAY(new Say());
 
     private final Command c;
 
