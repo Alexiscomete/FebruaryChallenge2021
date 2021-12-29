@@ -4,7 +4,6 @@ import Scanners.GetScanner;
 import java.io.File;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
-import java.util.Locale;
 
 public class MainApp extends App {
 
