@@ -4,6 +4,7 @@ import Scanners.GetScanner;
 import java.io.File;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
+import java.util.Locale;
 
 public class MainApp extends App {
 
@@ -17,11 +18,14 @@ public class MainApp extends App {
         path = sc.getScanner().nextLine();
         admin = yes;
 
-
+        if (path.equals("~")) {  // get ~ (user root directory) stored in System.getProperty("user.home")
+            path = Paths.get(System.getProperty("user.home")).normalize().toString();
+            System.out.println(path);
+        }
         File file = new File(path);
         if (file.exists()) {
             if (!file.isDirectory()) {
-                System.out.println("This is not a directory, open project directory, think to use the / or \\ (like C:/)");
+                System.out.println("This is not a directory, opening project directory, think to use the / or \\ (like C:/)");
                 String p = Main.class.getResource("Main.class").getPath();
                 String first = p.substring(0, p.lastIndexOf('!')) + "/../";
                 try {
