@@ -7,16 +7,12 @@ import java.util.Scanner;
 public class ReadC implements Command {
     @Override
     public void execute(String[] args, String command, String path, MainApp app, Admin admin) {
+
         // Get the complete file name with spaces
-        String[] argsWithoutRc = new String[args.length - 1];
-        for (int i = 1, j = 0;i < args.length; i++) {
-            argsWithoutRc[j++] = args[i];
-        }
-        StringBuilder completeFileName = new StringBuilder();
-        for (String s : argsWithoutRc) {
-            completeFileName.append(s).append(" ");
-        }
-        completeFileName.deleteCharAt(completeFileName.length() - 1);
+        // rc file name.txt
+        //    ^
+        // 0123
+        String completeFileName = command.substring(3);
 
         if (args.length > 1) {
             File file = new File(path + "/" + completeFileName);
