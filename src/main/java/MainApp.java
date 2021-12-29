@@ -18,7 +18,7 @@ public class MainApp extends App {
         path = sc.getScanner().nextLine();
         admin = yes;
 
-        // Get user home directory (C:\Users\username in Windows)
+        // Get user home directory (C:\\Users\\Username in Windows)
         String userHome = Paths.get(System.getProperty("user.home")).normalize().toString().replace("\\", "/");
         path = Paths.get(path.replaceFirst("~", userHome)).normalize().toString();
 

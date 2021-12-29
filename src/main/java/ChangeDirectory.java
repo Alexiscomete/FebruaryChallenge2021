@@ -7,10 +7,10 @@ public class ChangeDirectory implements Command {
     @Override
     public void execute(String[] args, String command, String path, MainApp app, Admin admin) {
         String newPath = command.substring(3);
-        // Get user home directory (C:\Users\username in Windows)
+        // Get user home directory (C:\\Users\\Username in Windows)
         String userHome = Paths.get(System.getProperty("user.home")).normalize().toString().replace("\\", "/");
         newPath = Paths.get(newPath.replaceFirst("~", userHome)).normalize().toString();
-        
+
         if (!newPath.startsWith(".")) {
             File file = new File(newPath);
             if (file.exists()) {
