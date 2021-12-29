@@ -18,10 +18,10 @@ public class MainApp extends App {
         path = sc.getScanner().nextLine();
         admin = yes;
 
-        if (path.equals("~")) {  // get ~ (user root directory) stored in System.getProperty("user.home")
-            path = Paths.get(System.getProperty("user.home")).normalize().toString();
-            System.out.println(path);
-        }
+        // Get user home directory (C:\Users\username in Windows)
+        String userHome = Paths.get(System.getProperty("user.home")).normalize().toString().replace("\\", "/");
+        path = Paths.get(path.replaceFirst("~", userHome)).normalize().toString();
+
         File file = new File(path);
         if (file.exists()) {
             if (!file.isDirectory()) {
