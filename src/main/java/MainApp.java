@@ -17,11 +17,14 @@ public class MainApp extends App {
         path = sc.getScanner().nextLine();
         admin = yes;
 
+        // Get user home directory (C:\\Users\\Username in Windows)
+        String userHome = Paths.get(System.getProperty("user.home")).normalize().toString().replace("\\", "/");
+        path = Paths.get(path.replaceFirst("~", userHome)).normalize().toString();
 
         File file = new File(path);
         if (file.exists()) {
             if (!file.isDirectory()) {
-                System.out.println("This is not a directory, open project directory, think to use the / or \\ (like C:/)");
+                System.out.println("This is not a directory, opening project directory, think to use the / or \\ (like C:/)");
                 String p = Main.class.getResource("Main.class").getPath();
                 String first = p.substring(0, p.lastIndexOf('!')) + "/../";
                 try {

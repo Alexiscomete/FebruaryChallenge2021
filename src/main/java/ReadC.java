@@ -7,8 +7,15 @@ import java.util.Scanner;
 public class ReadC implements Command {
     @Override
     public void execute(String[] args, String command, String path, MainApp app, Admin admin) {
+
+        // Get the complete file name with spaces
+        // rc file name.txt
+        //    ^
+        // 0123
+        String completeFileName = command.substring(3);
+
         if (args.length > 1) {
-            File file = new File(path + "/" + args[1]);
+            File file = new File(path + "/" + completeFileName);
             if (file.exists()) {
                 if(file.isDirectory()) {
                     System.out.println("rc -> list");
